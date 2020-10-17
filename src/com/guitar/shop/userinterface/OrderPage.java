@@ -8,12 +8,16 @@ import com.guitar.shop.model.SalesRepresentative;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,6 +35,9 @@ public class OrderPage {
 
         stage = new Stage();
         stage.setTitle("GuitarshopFX - Create an Order");
+        stage.setMinWidth(600);
+
+
         // initialise data
         db = new Database();
         salesrepresentative = FXCollections.observableArrayList(db.getSalespersons());
@@ -46,11 +53,18 @@ public class OrderPage {
         TextField searchCustomerField = new TextField();
         searchCustomerField.setPromptText("Enter name");
 
+        searchCustomerField.onActionProperty();
         Button searchButton = new Button();
         searchButton.setText("Search");
 
         Label articleLabel = new Label();
         articleLabel.setText("Articles");
+
+        GridPane.setConstraints(makeOrderLabel,7,7);
+        GridPane.setConstraints(searchCustomerField,7,8);
+        GridPane.setConstraints(searchButton,7,9);
+
+
 
         TableView<Article> articleTableview = new TableView<>();
         articleTableview.setEditable(true);
@@ -83,6 +97,7 @@ public class OrderPage {
         articleTableview.getColumns().addAll(quantityCol,bandCol,modelCol,acousticCol,typeCol,priceCol);
         articleTableview.setItems(articles);
 
+
         Button addButton = new Button();
         addButton.setText("Add");
 
@@ -95,15 +110,19 @@ public class OrderPage {
         Button resetButton = new Button();
         resetButton.setText("Reset");
 
-        VBox layout = new VBox();
-        //layout.setPadding(new Insets(10));
-        layout.setSpacing(20);
+
 
         HBox form = new HBox();
-        //form.setPadding(new Insets(10));
+        form.setPadding(new Insets(10));
         form.setSpacing(20);
-
         form.getChildren().addAll(addButton,deleteButton,confirmButton,resetButton);
+
+        VBox layout = new VBox();
+        layout.setPadding(new Insets(10));
+        layout.setSpacing(20);
+        layout.getChildren().addAll(articleTableview);
+        layout.getChildren().add(form);
+        layout.getChildren().addAll(makeOrderLabel,searchCustomerField,searchButton);
 
         Scene scene = new Scene(layout);
         stage.setScene(scene);

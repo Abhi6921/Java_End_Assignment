@@ -1,5 +1,6 @@
 package com.guitar.shop;
 
+import com.guitar.shop.userinterface.CustomerListPage;
 import com.guitar.shop.userinterface.DashBoardPage;
 import com.guitar.shop.userinterface.LoginPage;
 import com.guitar.shop.userinterface.OrderPage;
@@ -29,10 +30,14 @@ public class Main extends Application {
          DashBoardPage page = new DashBoardPage();
         page.getStage().show();
 
+         OrderPage page = new OrderPage();
+        page.getStage().show();
+
          */
 
-        OrderPage page = new OrderPage();
+        CustomerListPage page = new CustomerListPage();
         page.getStage().show();
+
 
 
 
