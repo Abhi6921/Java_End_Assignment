@@ -112,4 +112,7 @@ public class OrderPage {
         
     }
 
+    public Stage getStage() {
+        return stage;
+    }
 }

@@ -2,6 +2,7 @@ package com.guitar.shop;
 
 import com.guitar.shop.userinterface.DashBoardPage;
 import com.guitar.shop.userinterface.LoginPage;
+import com.guitar.shop.userinterface.OrderPage;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -25,10 +26,15 @@ public class Main extends Application {
 
         loginPage.getStage().show();
 
+         DashBoardPage page = new DashBoardPage();
+        page.getStage().show();
+
          */
 
-        DashBoardPage page = new DashBoardPage();
+        OrderPage page = new OrderPage();
         page.getStage().show();
+
+
 
         //primaryStage.show(loginPage.getStage().show());
     }
