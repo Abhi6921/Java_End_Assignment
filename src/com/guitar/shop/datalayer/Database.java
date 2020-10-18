@@ -1,9 +1,6 @@
 package com.guitar.shop.datalayer;
 
-import com.guitar.shop.model.Customer;
-import com.guitar.shop.model.Manager;
-import com.guitar.shop.model.Person;
-import com.guitar.shop.model.SalesRepresentative;
+import com.guitar.shop.model.*;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -15,12 +12,14 @@ import java.util.stream.Collectors;
 public class Database {
     private static List<SalesRepresentative> salesRepresentatives = new ArrayList<>();
     private static List<Manager> managers = new ArrayList<>();
-    ObservableList<Customer> customers = FXCollections.observableArrayList();
+    private static List<ArticleInStock> articles = new ArrayList<>();
 
     public List<SalesRepresentative> getSalespersons() {return salesRepresentatives; }
 
     public List<Manager> getManagers() {return managers; }
-    public ObservableList<Customer> getCustomers() { return customers; }
+
+    public List<ArticleInStock> articles(){return articles; }
+
 
     public Database() {
         createSalesRepresentatives();
@@ -40,13 +39,13 @@ public class Database {
         managers.add(new Manager("John","Diggle","johntheboss","john9"));
     }
 
-    public void customerList(){
+    public void inITAticles(){
 
-        customers.add(new Customer("Wim","Wiltenburg","Stentorstaat 90","Amsterdam","06-123456789","wim@email.com"));
-        customers.add(new Customer("Jack","Traven","Dropsstraat 10","Arhnem","06-87654321","jack@gmail.com"));
-        customers.add(new Customer("Jenny","Gump","Churchillaliee141","Den Haag","0614253648","jenny@gmail.com"));
-
+        articles.add(new ArticleInStock(0,"Fender","Telecaster",false,ArticleType.REGULAR,1079.79,4));
+        articles.add(new ArticleInStock(0,"Fender","Precision",false,ArticleType.BRASS,1300.40,5));
+        articles.add(new ArticleInStock(0,"Simon","Pro Flame Maple",true,ArticleType.REGULAR,1290.7,6));
     }
+
 
     public Person findByUsername(String username) {
         ArrayList<Person> dbUsers = new ArrayList<Person>();

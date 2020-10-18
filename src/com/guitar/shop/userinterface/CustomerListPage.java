@@ -20,7 +20,7 @@ import java.util.List;
 public class CustomerListPage {
 
     Stage stage;
-    private ObservableList<Customer> customers;
+
 
     public CustomerListPage(){
 
@@ -31,7 +31,7 @@ public class CustomerListPage {
 
         Database db = new Database();
 
-        customers = FXCollections.observableArrayList(db.getCustomers());
+
 
         Label customerlistlabel = new Label();
         customerlistlabel.setText("Customer List");
@@ -41,34 +41,33 @@ public class CustomerListPage {
         customerTableView.setEditable(true);
         customerTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        TableColumn firstNameCol = new TableColumn("First Name");
+        TableColumn<Customer, String> firstNameCol = new TableColumn("First Name");
         firstNameCol.setMinWidth(100);
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 
-        TableColumn lastNameCol = new TableColumn("Last Name");
+        TableColumn<Customer, String> lastNameCol = new TableColumn("Last Name");
         lastNameCol.setMinWidth(100);
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
-        TableColumn streetAdressCol = new TableColumn("Street Adress");
+        TableColumn<Customer, String> streetAdressCol = new TableColumn("Street Adress");
         streetAdressCol.setMinWidth(100);
         streetAdressCol.setCellValueFactory(new PropertyValueFactory<>("streetAdress"));
 
-        TableColumn cityCol = new TableColumn("City");
+        TableColumn<Customer,String> cityCol = new TableColumn("City");
         cityCol.setMinWidth(100);
         cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
 
-        TableColumn phoneCol = new TableColumn("Phone #");
+        TableColumn<Customer,String> phoneCol = new TableColumn("Phone #");
         phoneCol.setMinWidth(100);
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
-        TableColumn emailCol = new TableColumn("Email");
+        TableColumn<Customer, String> emailCol = new TableColumn("Email");
         emailCol.setMinWidth(100);
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 
+
+        customerTableView.setItems(getCustomers());
         customerTableView.getColumns().addAll(firstNameCol,lastNameCol,streetAdressCol,cityCol,phoneCol,emailCol);
-
-        customerTableView.setItems(customers);
-
 
 
         VBox customerPane = new VBox();
@@ -78,6 +77,15 @@ public class CustomerListPage {
         stage.setScene(scene);
 
 
+    }
+
+    public ObservableList<Customer> getCustomers(){
+        ObservableList<Customer> customers = FXCollections.observableArrayList();
+
+        customers.add(new Customer("Wim","Wiltenburg","Stentorstraat 90","Amsterdam","06123456789","wim@email.com"));
+        customers.add(new Customer("Jack","Traven","Dropsstraat 10","Arnhem","06-87654321","jack@email.com"));
+        customers.add(new Customer("Jenny","Gump","ChurchillaBee","Den Haag","06-87654321","jenny@email.com"));
+        return customers;
     }
     public Stage getStage(){return stage; }
 
