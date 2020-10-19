@@ -7,12 +7,16 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Database {
+    private static Customer currentlySelectedCustomer = null;
+
     private static List<SalesRepresentative> salesRepresentatives = new ArrayList<>();
     private static List<Manager> managers = new ArrayList<>();
     private static List<ArticleInStock> articles = new ArrayList<>();
+    private static List<Customer> customers = new ArrayList<>();
 
     public List<SalesRepresentative> getSalespersons() {return salesRepresentatives; }
 
@@ -21,10 +25,17 @@ public class Database {
     public List<ArticleInStock> articles(){return articles; }
 
 
+
     public Database() {
         createSalesRepresentatives();
         createManagers();
+        createCustomers();
+    }
 
+    public void createCustomers() {
+        customers.add(new Customer("John", "Dow", "Äddress1", "Ämsterdam", "509438", "john.dow@gmail.com"));
+        customers.add(new Customer("Emily", "Dow", "Äddress1", "Ämsterdam", "509438", "john.dow@gmail.com"));
+        customers.add(new Customer("Sarah", "Dow", "Äddress1", "Ämsterdam", "509438", "john.dow@gmail.com"));
     }
 
     public void createSalesRepresentatives() {
@@ -46,7 +57,6 @@ public class Database {
         articles.add(new ArticleInStock(0,"Simon","Pro Flame Maple",true,ArticleType.REGULAR,1290.7,6));
     }
 
-
     public Person findByUsername(String username) {
         ArrayList<Person> dbUsers = new ArrayList<Person>();
         dbUsers.addAll(salesRepresentatives);
@@ -55,5 +65,11 @@ public class Database {
                 .filter(user -> user.getUsername().equalsIgnoreCase(username))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("User not found."));
+    }
+
+    public List<Customer> findCustomersByName(String searchText) {
+        Predicate<Customer> isMatchingByName
+                = customer -> customer.getFirstName().contains(searchText);
+        return customers.stream().filter(isMatchingByName).collect(Collectors.toList());
     }
 }

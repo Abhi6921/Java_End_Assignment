@@ -30,13 +30,17 @@ public class Main extends Application {
          DashBoardPage page = new DashBoardPage();
         page.getStage().show();
 
-         OrderPage page = new OrderPage();
+
+        CustomerListPage page = new CustomerListPage();
         page.getStage().show();
 
          */
 
-        CustomerListPage page = new CustomerListPage();
+        OrderPage page = new OrderPage();
         page.getStage().show();
+
+
+
 
 
 

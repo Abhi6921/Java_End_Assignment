@@ -1,10 +1,7 @@
 package com.guitar.shop.userinterface;
 
 import com.guitar.shop.datalayer.Database;
-import com.guitar.shop.model.Article;
-import com.guitar.shop.model.ArticleType;
-import com.guitar.shop.model.Manager;
-import com.guitar.shop.model.SalesRepresentative;
+import com.guitar.shop.model.*;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +20,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class OrderPage {
 
@@ -57,6 +57,15 @@ public class OrderPage {
         Button searchButton = new Button();
         searchButton.setText("Search");
 
+        searchButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String searchedValue = searchCustomerField.getText();
+                List<Customer> customersByName = db.findCustomersByName(searchedValue);
+                CustomerListPage page = new CustomerListPage(customersByName);
+                page.getStage().show();
+            }
+        });
         Label articleLabel = new Label();
         articleLabel.setText("Articles");
 

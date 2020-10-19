@@ -15,21 +15,24 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerListPage {
 
     Stage stage;
 
+    private ObservableList<Customer> foundCustomers;
 
-    public CustomerListPage(){
+    public CustomerListPage(List<Customer> foundCustomers){
+        this.foundCustomers = FXCollections.observableArrayList(foundCustomers);
 
         stage = new Stage();
         stage.setTitle("GuitarShopFX-Search customer");
 
         stage.setMinWidth(600);
 
-        Database db = new Database();
+        //Database db = new Database();
 
 
 
@@ -65,7 +68,6 @@ public class CustomerListPage {
         emailCol.setMinWidth(100);
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-
         customerTableView.setItems(getCustomers());
         customerTableView.getColumns().addAll(firstNameCol,lastNameCol,streetAdressCol,cityCol,phoneCol,emailCol);
 
@@ -80,15 +82,16 @@ public class CustomerListPage {
     }
 
     public ObservableList<Customer> getCustomers(){
+        /*
         ObservableList<Customer> customers = FXCollections.observableArrayList();
-
         customers.add(new Customer("Wim","Wiltenburg","Stentorstraat 90","Amsterdam","06123456789","wim@email.com"));
         customers.add(new Customer("Jack","Traven","Dropsstraat 10","Arnhem","06-87654321","jack@email.com"));
         customers.add(new Customer("Jenny","Gump","ChurchillaBee","Den Haag","06-87654321","jenny@email.com"));
         return customers;
+
+         */
+        return foundCustomers;
     }
+
     public Stage getStage(){return stage; }
-
-
-
 }
