@@ -43,10 +43,14 @@ public class Main extends Application {
         OrderPage page = new OrderPage();
         page.getStage().show();
 
-         */
-
         StockMaintenancePage2 page = new StockMaintenancePage2();
         page.getStage().show();
+
+         */
+        AddArticlePage page = new AddArticlePage();
+        page.getStage().show();
+
+
 
 
 

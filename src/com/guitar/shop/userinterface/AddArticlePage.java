@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -16,17 +17,23 @@ import javafx.stage.Stage;
 public class AddArticlePage {
 
     Stage stage;
-    TableView<Article> articles;
     ArticleInStock stock;
     public AddArticlePage(){
 
         stage = new Stage();
         stage.setTitle("Guitarshop FX- Add article");
-        stage.setMinWidth(450);
+        stage.setMinWidth(500);
+        stage.setHeight(500);
+
+
+        VBox addArticle = new VBox();
+        TableView<Article> articlesTableView  = new TableView<>();
+
+
 
         TableColumn<Article, String> bandCol = new TableColumn<>("Brand");
         bandCol.setMinWidth(200);
-        bandCol.setCellValueFactory(new PropertyValueFactory<>("band"));
+        bandCol.setCellValueFactory(new PropertyValueFactory<>("brand"));
 
         TableColumn<Article, String> modelCol = new TableColumn<>("Model");
         modelCol.setMinWidth(200);
@@ -34,7 +41,7 @@ public class AddArticlePage {
 
         TableColumn<Article, Boolean> acousticCol = new TableColumn<>("Acoustic");
         acousticCol.setMinWidth(200);
-        acousticCol.setCellValueFactory(new PropertyValueFactory<>("Acoustic"));
+        acousticCol.setCellValueFactory(new PropertyValueFactory<>("acoustic"));
 
         TableColumn<Article, GuitarType> typeCol = new TableColumn<>("Type");
         typeCol.setMinWidth(200);
@@ -44,12 +51,12 @@ public class AddArticlePage {
         priceCol.setMinWidth(200);
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        articles = new TableView<>();
+        articlesTableView.getColumns().addAll(bandCol,modelCol,acousticCol);
 
         TextField inputNrOfArticles = new TextField();
         inputNrOfArticles.setPromptText("Enter number");
 
-        int nrOfArticles = Integer.parseInt(inputNrOfArticles.getText());
+        //int nrOfArticles = Integer.parseInt(inputNrOfArticles.getText());
 
         Button addButton = new Button("Add");
 
@@ -70,18 +77,22 @@ public class AddArticlePage {
 
         Button cancelButton = new Button("Cancel");
 
-        HBox form = new HBox();
-        form.setPadding(new Insets(10));
-        form.setSpacing(10);
-        form.getChildren().addAll(inputNrOfArticles,addButton,cancelButton);
+        GridPane gridPane = new GridPane();
+        gridPane.setPadding(new Insets(10));
+        gridPane.setVgap(10);
+        gridPane.setHgap(8);
+        gridPane.add(inputNrOfArticles,0,0,1,1);
+        gridPane.add(addButton,1,0,1,1);
+        gridPane.add(cancelButton,2,0,1,1);
 
-        VBox layout = new VBox();
-        layout.getChildren().addAll(articles);
-        layout.getChildren().add(form);
 
-        Scene scene = new Scene(layout);
+        addArticle.getChildren().addAll(articlesTableView);
+        addArticle.getChildren().addAll(gridPane);
+
+        Scene scene = new Scene(addArticle);
         stage.setScene(scene);
-        stage.show();
+
 
     }
+    public Stage getStage(){ return stage; }
 }
