@@ -1,10 +1,6 @@
 package com.guitar.shop.datalayer;
 
 import com.guitar.shop.model.*;
-import javafx.beans.InvalidationListener;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -15,14 +11,12 @@ public class Database {
 
     private static List<SalesRepresentative> salesRepresentatives = new ArrayList<>();
     private static List<Manager> managers = new ArrayList<>();
-    private static List<ArticleInStock> articles = new ArrayList<>();
+    private static List<Article> articles = new ArrayList<>();
     private static List<Customer> customers = new ArrayList<>();
 
     public List<SalesRepresentative> getSalespersons() {return salesRepresentatives; }
 
     public List<Manager> getManagers() {return managers; }
-
-    public List<ArticleInStock> articles(){return articles; }
 
 
 
@@ -30,6 +24,7 @@ public class Database {
         createSalesRepresentatives();
         createManagers();
         createCustomers();
+        createArticles();
     }
 
     public void createCustomers() {
@@ -50,11 +45,15 @@ public class Database {
         managers.add(new Manager("John","Diggle","johntheboss","john9"));
     }
 
-    public void inITAticles(){
+    public void createArticles(){
 
-        articles.add(new ArticleInStock(0,"Fender","Telecaster",false,ArticleType.REGULAR,1079.79,4));
-        articles.add(new ArticleInStock(0,"Fender","Precision",false,ArticleType.BRASS,1300.40,5));
-        articles.add(new ArticleInStock(0,"Simon","Pro Flame Maple",true,ArticleType.REGULAR,1290.7,6));
+        articles.add(new Article(0,"Fender","Telecaster",false, GuitarType.REGULAR,1079.79));
+        articles.add(new Article(0,"Fender","Precision",false, GuitarType.BRASS,1300.40));
+        articles.add(new Article(0,"Simon","Pro Flame Maple",true, GuitarType.REGULAR,1290.7));
+    }
+
+    public static List<Article> getArticles() {
+        return articles;
     }
 
     public Person findByUsername(String username) {

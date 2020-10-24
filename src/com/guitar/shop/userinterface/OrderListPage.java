@@ -90,7 +90,7 @@ public class OrderListPage {
         acousticCol.setMinWidth(100);
         acousticCol.setCellValueFactory(new PropertyValueFactory<>("acoustic"));
 
-        TableColumn<ArticleDetails, ArticleType> typeCol = new TableColumn<>("Type");
+        TableColumn<ArticleDetails, GuitarType> typeCol = new TableColumn<>("Type");
         typeCol.setMinWidth(100);
         typeCol.setCellValueFactory(new PropertyValueFactory<>("articleType"));
 

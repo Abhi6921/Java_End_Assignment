@@ -2,7 +2,6 @@ package com.guitar.shop.userinterface;
 
 import com.guitar.shop.datalayer.Database;
 import com.guitar.shop.model.*;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,10 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class OrderPage {
 
@@ -97,7 +93,7 @@ public class OrderPage {
 
         TableColumn typeCol = new TableColumn("Type");
         typeCol.setMinWidth(100);
-        typeCol.setCellValueFactory(new PropertyValueFactory<Article, ArticleType>("type"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<Article, GuitarType>("type"));
 
         TableColumn priceCol = new TableColumn("Price");
         priceCol.setMinWidth(100);

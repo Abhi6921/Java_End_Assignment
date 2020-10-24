@@ -5,10 +5,10 @@ public class ConfirmOrder {
     private int quantity;
     private String brand;
     private String model;
-    private ArticleType type;
+    private GuitarType type;
     private double price;
 
-    public ConfirmOrder(int quantity, String brand, String model, ArticleType type, double price) {
+    public ConfirmOrder(int quantity, String brand, String model, GuitarType type, double price) {
         this.quantity = quantity;
         this.brand = brand;
         this.model = model;

@@ -1,9 +1,8 @@
 package com.guitar.shop.userinterface;
 
-import com.guitar.shop.datalayer.Database;
 import com.guitar.shop.model.Article;
 import com.guitar.shop.model.ArticleInStock;
-import com.guitar.shop.model.ArticleType;
+import com.guitar.shop.model.GuitarType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -37,7 +36,7 @@ public class AddArticlePage {
         acousticCol.setMinWidth(200);
         acousticCol.setCellValueFactory(new PropertyValueFactory<>("Acoustic"));
 
-        TableColumn<Article, ArticleType> typeCol = new TableColumn<>("Type");
+        TableColumn<Article, GuitarType> typeCol = new TableColumn<>("Type");
         typeCol.setMinWidth(200);
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
 

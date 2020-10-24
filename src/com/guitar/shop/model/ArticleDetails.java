@@ -6,11 +6,11 @@ public class ArticleDetails {
     private String brand;
     private ModelType type;
     private Boolean arcoustic;
-    private ArticleType articleType;
+    private GuitarType articleType;
     private Double price;
     private int quantity;
 
-    public ArticleDetails(String uniquenumber, String brand, ModelType modeltype, ArticleType type, Boolean aroustic ,Double price, int quantity ){
+    public ArticleDetails(String uniquenumber, String brand, ModelType modeltype, GuitarType type, Boolean aroustic , Double price, int quantity ){
 
         this.uniqueNumber = uniquenumber;
         this.brand = brand;
@@ -24,7 +24,7 @@ public class ArticleDetails {
     public String getBrand(){return brand; }
     public ModelType getType(){return type; }
     public Boolean getArcoustic(){ return arcoustic; }
-    public ArticleType getarticleType() {return articleType; }
+    public GuitarType getarticleType() {return articleType; }
     public Double getPrice() {return price; }
     public int getQuantity(){ return quantity; }
 

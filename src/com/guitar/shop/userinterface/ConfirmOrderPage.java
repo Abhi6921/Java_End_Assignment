@@ -1,6 +1,6 @@
 package com.guitar.shop.userinterface;
 
-import com.guitar.shop.model.ArticleType;
+import com.guitar.shop.model.GuitarType;
 import com.guitar.shop.model.ConfirmOrder;
 import com.guitar.shop.model.Customer;
 import javafx.collections.FXCollections;
@@ -13,8 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class ConfirmOrderPage {
 
@@ -61,7 +59,7 @@ public class ConfirmOrderPage {
         modelCol.setMinWidth(200);
         modelCol.setCellValueFactory(new PropertyValueFactory<>("model"));
 
-        TableColumn<ConfirmOrder, ArticleType> typeCol = new TableColumn<>("Type");
+        TableColumn<ConfirmOrder, GuitarType> typeCol = new TableColumn<>("Type");
         typeCol.setMinWidth(200);
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
 

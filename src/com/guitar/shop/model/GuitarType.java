@@ -1,5 +1,5 @@
 package com.guitar.shop.model;
 
-public enum ArticleType {
+public enum GuitarType {
     REGULAR, BRASS
 }
