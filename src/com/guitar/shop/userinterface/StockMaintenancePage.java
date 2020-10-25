@@ -16,13 +16,13 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 
-public class StockMaintenancePage2 {
+public class StockMaintenancePage {
 
     Stage stage;
     private Database db;
     private ObservableList<Article> articles;
 
-    public StockMaintenancePage2(){
+    public StockMaintenancePage(){
 
         stage = new Stage();
         stage.setTitle("GuitarShop FX- Stock maintenance");
@@ -69,6 +69,10 @@ public class StockMaintenancePage2 {
         guitarType.setMinWidth(100);
         guitarType.setCellValueFactory(new PropertyValueFactory<>("type"));
 
+        TableColumn<Article, Double> priceCol = new TableColumn<>();
+        priceCol.setMinWidth(100);
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
         orderListTableView.setItems(articles);
 
         orderListTableView.setItems(articles);
@@ -88,10 +92,6 @@ public class StockMaintenancePage2 {
         Button addButton = new Button();
         addButton.setText("Add");
         addButton.setOnAction(event -> {
-            //Selected Item ID -> productId
-            //Quantity TextField Integer Value
-            //If Negate is selected to remove elements
-            //Check if current amount is more than Negate amount
         });
 
         GridPane gridPane = new GridPane();

@@ -82,14 +82,6 @@ public class CustomerListPage {
     }
 
     public ObservableList<Customer> getCustomers(){
-        /*
-        ObservableList<Customer> customers = FXCollections.observableArrayList();
-        customers.add(new Customer("Wim","Wiltenburg","Stentorstraat 90","Amsterdam","06123456789","wim@email.com"));
-        customers.add(new Customer("Jack","Traven","Dropsstraat 10","Arnhem","06-87654321","jack@email.com"));
-        customers.add(new Customer("Jenny","Gump","ChurchillaBee","Den Haag","06-87654321","jenny@email.com"));
-        return customers;
-
-         */
         return foundCustomers;
     }
 

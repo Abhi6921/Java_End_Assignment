@@ -21,15 +21,9 @@ public class LoginPage {
     private LoginController loginController;
     private Stage stage;
 
-
-
     public LoginPage() {
         loginController = new LoginController();
         createPageGrid();
-        createLoginBlock();
-    }
-
-    private void createLoginBlock(){
         // Login label
         Label loginLabel = new Label();
         loginLabel.setText("Login");
@@ -72,6 +66,8 @@ public class LoginPage {
 
         createLoginPage(usernamelabel,passwordlabel,usernameInput,passwordInput,loginButton);
     }
+
+
 
     private void createLoginPage(Label usernamelabel,
                                  Label passwordlabel,

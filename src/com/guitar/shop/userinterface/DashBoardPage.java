@@ -68,7 +68,7 @@ public class DashBoardPage {
 
         Label welcomelabel = new Label();
 
-        //welcomelabel.setText("Welcome " + person.getFirstName() + " " + person.getLastName());
+
 
         Label rolelabel = new Label("Your role is " + EmployeeType.SALES_REPRESENTATIVE);
 
@@ -80,11 +80,7 @@ public class DashBoardPage {
         GridPane.setConstraints(rolelabel,11,10);
         GridPane.setConstraints(datelabel, 12,10);
 
-        //gridPane.getChildren().addAll(menubar,welcomelabel,rolelabel,datelabel);
 
-
-        //Scene scene = new Scene(menubar,200,100,welcomelabel,400,200,rolelabel,500,300,datelabel,600,300);
-        //stage.setScene(scene);
 
     }
     public Stage getStage() { return stage; }
