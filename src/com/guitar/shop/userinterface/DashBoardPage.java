@@ -1,10 +1,7 @@
 package com.guitar.shop.userinterface;
 
 import com.guitar.shop.datalayer.Database;
-import com.guitar.shop.model.EmployeeType;
-import com.guitar.shop.model.Manager;
-import com.guitar.shop.model.Person;
-import com.guitar.shop.model.SalesRepresentative;
+import com.guitar.shop.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -16,6 +13,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.DataFormat;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.util.Calendar;
@@ -75,6 +73,17 @@ public class DashBoardPage {
         DataFormat dateFormat = new DataFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         Label datelabel = new Label("Today is: " + cal.toString());
+
+
+        Label label1 = new Label();
+        label1.setText("This is a text message");
+        label1.setFont(new Font(20));
+        WelcomeMessage message;
+
+        Label label2 = new Label();
+        label2.setText("This is another text message");
+        label2.setFont(new Font(40));
+        WelcomeMessage message1;
 
         //GridPane.setConstraints(welcomelabel,13,10);
         GridPane.setConstraints(rolelabel,11,10);

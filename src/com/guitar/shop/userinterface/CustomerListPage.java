@@ -4,11 +4,15 @@ import com.guitar.shop.datalayer.Database;
 import com.guitar.shop.model.Customer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -75,6 +79,57 @@ public class CustomerListPage {
         VBox customerPane = new VBox();
         customerPane.getChildren().addAll(customerlistlabel,customerTableView);
 
+        Button addCustomerButton = new Button();
+        addCustomerButton.setText("Add customer");
+
+        addCustomerButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = new Stage();
+                stage.setMinWidth(100);
+                stage.setMinHeight(100);
+                stage.setTitle("Guitarshop FX- Add customer");
+
+                TextField firstNameinput = new TextField();
+                firstNameinput.setPromptText("Enter firstname");
+
+                TextField lastNameinput = new TextField();
+                lastNameinput.setPromptText("Enter lastname");
+
+                TextField streetAdressinput = new TextField();
+                streetAdressinput.setPromptText("enter adress");
+
+                TextField cityfieldinput = new TextField();
+                cityfieldinput.setPromptText("city");
+
+                TextField phoneNumberInput = new TextField();
+                phoneNumberInput.setPromptText("phone number");
+
+                TextField emailAdressinput = new TextField();
+                emailAdressinput.setPromptText("Email Adress");
+
+                Button addButton = new Button();
+                addButton.setText("Add customer");
+                addButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        List<Customer> customers = new ArrayList<>();
+                        customers.add(new Customer(firstNameinput.getText(),lastNameinput.getText(),streetAdressinput.getText(),cityfieldinput.getText(),phoneNumberInput.getText(),emailAdressinput.getText()));
+                    }
+                });
+
+               Button cancelButton = new Button();
+               cancelButton.setText("Cancel");
+
+               cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+                   @Override
+                   public void handle(ActionEvent event) {
+                       stage.close();
+                   }
+               });
+
+            }
+        });
         Scene scene = new Scene(customerPane);
         stage.setScene(scene);
 

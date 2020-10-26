@@ -20,6 +20,7 @@ public class LoginPage {
 
     private LoginController loginController;
     private Stage stage;
+    private  int nrOfAttempts = 3;
 
     public LoginPage() {
         loginController = new LoginController();
@@ -56,6 +57,11 @@ public class LoginPage {
             @Override
             public void handle(ActionEvent event) {
                 loginController.athenticate(usernameInput.getText(),passwordInput.getText());
+
+               while(nrOfAttempts!=0)
+               {
+
+               }
             }
         });
         GridPane.setConstraints(usernamelabel,10,10);

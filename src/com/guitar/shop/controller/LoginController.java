@@ -8,14 +8,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.w3c.dom.xpath.XPathResult;
+import javafx.scene.control.Alert;
 
 public class LoginController implements EventHandler<ActionEvent> {
 
     Database db = new Database();
     ObservableList<SalesRepresentative> data = FXCollections.observableArrayList(db.getSalespersons());
-
+    private int nrOfLoginAttempts = 3;
+    Stage stage;
 
 
     @Override
@@ -25,10 +30,32 @@ public class LoginController implements EventHandler<ActionEvent> {
 
     public void athenticate(String username, String password){
         Person person = db.findByUsername(username);
-        //1.Retrieve the person type MANGER or SALES and pass it when loading the DashBoard.
-        //2.Menu ITEMS are specific based on the person type
+
+
         if(!person.getPassword().equalsIgnoreCase(password)) {
+            nrOfLoginAttempts--;
             throw new RuntimeException("Invalid User Credentials");
+        }
+
+        if (nrOfLoginAttempts==0)
+        {
+             stage = new Stage();
+            stage.setMinWidth(200);
+            stage.setMinHeight(100);
+
+            Label label1 = new Label();
+            label1.setText("Account Locked");
+
+            Label label2 = new Label();
+            label2.setText("Your account has been locked");
+
+            Button okButton = new Button();
+            okButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    stage.close();
+                }
+            });
         }
     }
 }
